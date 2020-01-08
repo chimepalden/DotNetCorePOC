@@ -1,0 +1,49 @@
+﻿@model MemberRegisterViewModel
+@{ ViewBag.Title = "Register";}
+
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="Register" method="post">
+    <div class="card m-3">
+        <div class="card-header bg-secondary">Register</div>
+        <div class="card-body">
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Department</label>
+                <select asp-for="Department" asp-items="Html.GetEnumSelectList<Dept>()" class="form-control">
+                    <option value="">Please Select</option>
+                </select>
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Photo</label>
+                <div class="custom-file">
+                    <input asp-for="Photo" class="form-control custom-file-input"/>
+                    <label class="custom-file-label">Upload Photo..</label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </div>
+    </div>
+    <!-- Jquery to bind the change in photo input using custom file input class-->
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                })
+            });
+        </script>
+    }
+</form>
+
