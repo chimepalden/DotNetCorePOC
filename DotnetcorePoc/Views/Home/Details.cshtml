@@ -1,0 +1,32 @@
+﻿@model HomeDetailsViewModel
+
+@{ 
+    ViewBag.Title = "Member Detail";
+    var photoPath = "~/Images/" + (Model.Member.PhotoPath ?? "noimage.jpg");
+}
+
+<div class="card m-3">
+    <div class="card-header bg-secondary">
+        @Model.Member.Name
+    </div> 
+    <div class="card-body">
+        <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+        <div>
+            Member ID: @Model.Member.Id
+        </div>
+        <div>
+            Email: @Model.Member.Email
+        </div>
+        <div>
+            Department: @Model.Member.Department
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-controller="home" asp-action="List" class="btn btn-info">Back</a>
+        <a asp-controller="home" asp-action="edit" class="btn btn-info" asp-route-id="@Model.Member.Id">Edit</a>
+        <a class="btn btn-danger">Delete</a>
+    </div>
+</div>
+@section  Scripts { 
+    <script></script>
+}

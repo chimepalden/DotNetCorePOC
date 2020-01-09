@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Error";
+}
+
+<div class="card m-3">
+    <div class="card-header bg-danger">
+        404 Not Found Error!
+    </div>
+    <div class="card-body align-self-center text-danger">
+        <h5>@ViewBag.ErrorMessage</h5>
+    </div>
+    <div class="card-footer align-self-center">
+        <a class=" btn btn-info" asp-controller="home" asp-action="index">
+            Click here to Home page.
+        </a>
+    </div>
+</div>

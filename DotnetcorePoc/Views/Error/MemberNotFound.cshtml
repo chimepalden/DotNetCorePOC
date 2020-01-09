@@ -1,0 +1,18 @@
+﻿@model int
+@{
+    ViewBag.Title = "Error";
+}
+
+<div class="card m-3">
+    <div class="card-header bg-danger">
+        404 Error!
+    </div>
+    <div class="card-body align-self-center text-danger">
+        <h5>Member with Id = @Model cannot be found.</h5>
+    </div>
+    <div class="card-footer align-self-center">
+        <a class=" btn btn-info" asp-controller="home" asp-action="list">
+            Click here to see the list of Members
+        </a>
+    </div>
+</div>
