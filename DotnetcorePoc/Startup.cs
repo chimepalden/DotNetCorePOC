@@ -24,6 +24,8 @@ namespace DotnetcorePoc
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add/register services to the container.
+        // Both services, asp.netcore framework service like AddMvc and custom service like IMemberRepository
+        // Interface, IServiceCollection is used to add our services to asp.net core dependency container
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
@@ -41,11 +43,11 @@ namespace DotnetcorePoc
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // Using AddScope method to have the instance of SqlMemberRepository class,
             // alive and available througout the entire scope of the http request
+            // Injecting custom Dependency/service, IMemberRepository of Implementation, SqlMemberRepository
             services.AddScoped<IMemberRepository, SqlMemberRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
