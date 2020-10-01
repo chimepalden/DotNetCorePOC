@@ -42,7 +42,7 @@ namespace DotnetcorePoc.Controllers
         // Displays the detail info of a member
         public ViewResult Details(int Id)
         {
-            throw new Exception("Error in Details view!");
+            // throw new Exception("Error in Details view!");
             Member member = _memberRepository.GetMember(Id);
             if(member == null)
             {
